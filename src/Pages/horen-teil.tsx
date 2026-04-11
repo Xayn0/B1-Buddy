@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const HorenTeil = () => {
-  return (
-    <div>horen-teil</div>
-  )
-}
+  return <div>horen-teil</div>;
+};
 
-export default HorenTeil
+export default HorenTeil;

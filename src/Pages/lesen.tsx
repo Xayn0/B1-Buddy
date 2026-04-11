@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function Lesen() {
-  return (
-    <div>Lesen</div>
-  )
+  return <div>Lesen</div>;
 }
 
-export default Lesen
+export default Lesen;

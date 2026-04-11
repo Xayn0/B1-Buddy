@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import RootLayout from "./layouts/root-layout";
-import Home from "./Pages/home";
+import Home from "./Pages/home-page";
 import Lesen from "./Pages/lesen";
 import LesenTeil from "./Pages/lesen-teil";
 import Horen from "./Pages/horen";

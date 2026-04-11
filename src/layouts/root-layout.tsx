@@ -1,25 +1,19 @@
-import { useEffect, useState } from "react";
 import { Outlet, Link } from "react-router-dom";
-import navItems, { linkClass, navItemsForMobile, type NavItem } from "./nav-items";
-
-
+import navItems, {
+  linkClass,
+  navItemsForMobile,
+  useNav,
+  type NavItem,
+} from "./nav-items";
 
 function RootLayout() {
-  const [mobileOpen, setMobileOpen] = useState(false);
-
-  useEffect(() => {
-    if (!mobileOpen) return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setMobileOpen(false);
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [mobileOpen]);
+  const { isOpen, toggle, close } = useNav();
 
   return (
     <div className="min-h-screen bg-white text-zinc-900 flex flex-col font-sans selection:bg-zinc-100 inter-class">
       <header className="sticky top-0 z-50 border-b border-zinc-100 bg-white/80 backdrop-blur-md">
         <nav className="relative h-16 max-w-6xl mx-auto px-6 flex items-center justify-between">
+          {/* JUST LOGO */}
           <Link
             to="/"
             className="font-semibold tracking-tighter text-xl text-zinc-900"
@@ -42,12 +36,12 @@ function RootLayout() {
           <button
             type="button"
             className="sm:hidden p-2 -mr-2 text-zinc-900 rounded-md hover:bg-zinc-100 transition-colors"
-            aria-expanded={mobileOpen}
+            aria-expanded={isOpen}
             aria-controls="mobile-nav"
-            aria-label={mobileOpen ? "Menü schließen" : "Menü öffnen"}
-            onClick={() => setMobileOpen((o) => !o)}
+            aria-label={isOpen ? "Menü schließen" : "Menü öffnen"}
+            onClick={toggle}
           >
-            {mobileOpen ? (
+            {isOpen ? (
               <svg
                 width="24"
                 height="24"
@@ -73,31 +67,22 @@ function RootLayout() {
           </button>
         </nav>
 
-        {mobileOpen && (
-          <>
-            <button
-              type="button"
-              aria-hidden
-              tabIndex={-1}
-              className="sm:hidden fixed inset-0 top-16 z-40 bg-zinc-900/20"
-              onClick={() => setMobileOpen(false)}
-            />
-            <div
-              id="mobile-nav"
-              className="sm:hidden relative z-50 border-t border-zinc-100 bg-white px-6 py-2 shadow-lg"
-            >
-              {navItemsForMobile  (navItems).map((item: NavItem) => (
-                <Link
-                  key={item.to}
-                  to={item.to}
-                  className={linkClass(item, "mobile")}
-                  onClick={() => setMobileOpen(false)}
-                >
-                  {item.name}
-                </Link>
-              ))}
-            </div>
-          </>
+        {isOpen && (
+          <div
+            id="mobile-nav"
+            className="sm:hidden relative z-50 border-t border-zinc-100 bg-white px-6 py-2 shadow-lg"
+          >
+            {navItemsForMobile(navItems).map((item: NavItem) => (
+              <Link
+                key={item.to}
+                to={item.to}
+                className={linkClass(item, "mobile")}
+                onClick={close}
+              >
+                {item.name}
+              </Link>
+            ))}
+          </div>
         )}
       </header>
 
@@ -105,6 +90,17 @@ function RootLayout() {
         <div className="absolute inset-0 -z-10 h-full w-full bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:32px_32px] opacity-40"></div>
         <Outlet />
       </main>
+
+      {/* Rendered outside header so `fixed` covers the viewport (backdrop-blur on header traps fixed descendants). */}
+      {isOpen && (
+        <button
+          type="button"
+          aria-hidden
+          tabIndex={-1}
+          className="sm:hidden fixed inset-0 top-16 z-40 cursor-pointer border-0 bg-zinc-900/20 p-0"
+          onClick={close}
+        />
+      )}
     </div>
   );
 }
