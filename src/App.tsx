@@ -2,17 +2,13 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import RootLayout from "./layouts/root-layout";
 import Home from "./Pages/home-page";
 import Lesen from "./Pages/lesen";
-import LesenTeil from "./Pages/lesen-teil-page";
+
 import Horen from "./Pages/horen";
-import HorenTeil from "./Pages/horen-teil";
+
+import LesenTeilPage from "./Pages/lesen-teil-page";
+import HorenTeilPage from "./Pages/horen-teil-page";
 
 
-//? ROUTING STURCTURE
-// / → RootLayout + Home
-// /lesen → RootLayout + Lesen
-// /lesen/:teilId → RootLayout + LesenTeil
-// /horen → RootLayout + Horen
-// /horen/:teilId → RootLayout + HorenTeil
 const router = createBrowserRouter([
   {
     path: "/",
@@ -20,7 +16,7 @@ const router = createBrowserRouter([
 
     children: [
       {
-        index: true,//this means root+home is the default render
+        index: true, //this means root+home is the default render
         element: <Home />,
       },
 
@@ -30,8 +26,8 @@ const router = createBrowserRouter([
       },
 
       {
-        path: "lesen/:teilId",
-        element: <LesenTeil />,
+        path: "lesen-teil/:teilId",
+        element: <LesenTeilPage />,
       },
 
       {
@@ -40,8 +36,8 @@ const router = createBrowserRouter([
       },
 
       {
-        path: "horen/:teilId",
-        element: <HorenTeil />,
+        path: "horen-teil/:teilId",
+        element: <HorenTeilPage />,
       },
     ],
   },
