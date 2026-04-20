@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
+import {
+  cardBodyTextClassName,
+  cardHeadingClassName,
+  teilListingCardLinkClassName,
+} from "../styles/tailwind-classes";
 
 function Lesen() {
-  const cardClassName =
-    "group relative flex min-h-64 flex-col items-start justify-between rounded-3xl border border-zinc-200 bg-white p-10 transition-all duration-500 hover:border-zinc-400 hover:shadow-[0_20px_50px_rgba(0,0,0,0.05)] overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400/40 focus-visible:ring-offset-2 focus-visible:ring-offset-white";
-
   return (
     <div className="min-h-[calc(100vh-4rem)] max-w-5xl mx-auto px-6 py-12 sm:py-16">
       <h1 className="text-3xl sm:text-4xl font-semibold text-zinc-900 tracking-tight text-center mb-10">
@@ -11,25 +13,25 @@ function Lesen() {
       </h1>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 w-full max-w-4xl mx-auto">
-        <Link to="/lesen-teil/1" className={cardClassName}>
-          <h2 className="text-3xl font-semibold text-zinc-900 mb-2">lesen-teil-1</h2>
-          <p className="text-zinc-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <Link to="/lesen-teil/1" className={teilListingCardLinkClassName}>
+          <h2 className={cardHeadingClassName}>Lesen-teil-1</h2>
+          <p className={cardBodyTextClassName}>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </Link>
-        <Link to="/lesen-teil/2" className={cardClassName}>
-          <h2 className="text-3xl font-semibold text-zinc-900 mb-2">lesen-teil-2</h2>
-          <p className="text-zinc-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <Link to="/lesen-teil/2" className={teilListingCardLinkClassName}>
+          <h2 className={cardHeadingClassName}>Lesen-teil-2</h2>
+          <p className={cardBodyTextClassName}>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </Link>
-        <Link to="/lesen-teil/3" className={cardClassName}>
-          <h2 className="text-3xl font-semibold text-zinc-900 mb-2">lesen-teil-3</h2>
-          <p className="text-zinc-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <Link to="/lesen-teil/3" className={teilListingCardLinkClassName}>
+          <h2 className={cardHeadingClassName}>Lesen-teil-3</h2>
+          <p className={cardBodyTextClassName}>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </Link>
-        <Link to="/lesen-teil/4" className={cardClassName}>
-          <h2 className="text-3xl font-semibold text-zinc-900 mb-2">lesen-teil-4</h2>
-          <p className="text-zinc-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <Link to="/lesen-teil/4" className={teilListingCardLinkClassName}>
+          <h2 className={cardHeadingClassName}>Lesen-teil-4</h2>
+          <p className={cardBodyTextClassName}>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </Link>
-        <Link to="/lesen-teil/5" className={cardClassName}>
-          <h2 className="text-3xl font-semibold text-zinc-900 mb-2">lesen-teil-5</h2>
-          <p className="text-zinc-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <Link to="/lesen-teil/5" className={teilListingCardLinkClassName}>
+          <h2 className={cardHeadingClassName}>Lesen-teil-5</h2>
+          <p className={cardBodyTextClassName}>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </Link>
       </div>
     </div>

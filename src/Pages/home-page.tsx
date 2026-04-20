@@ -1,4 +1,10 @@
 import { Link } from "react-router-dom";
+import {
+  cardBodyTextClassName,
+  cardHeadingClassName,
+  homeNavCardIconWrapClassName,
+  homeNavCardLinkClassName,
+} from "../styles/tailwind-classes";
 import { useTypewriter } from "./use-home-typewriter.ts";
 
 function Typewriter({ text }: { text: string }) {
@@ -28,11 +34,8 @@ const Home = () => {
 
         {/* Cards Grid - Sized up properly */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 w-full max-w-4xl">
-          <Link
-            to="/lesen"
-            className="group relative flex flex-col items-start justify-between rounded-3xl border border-zinc-200 bg-white p-10 transition-all duration-500 hover:border-zinc-400 hover:shadow-[0_20px_50px_rgba(0,0,0,0.05)] overflow-hidden"
-          >
-            <div className="mb-12 rounded-full bg-zinc-50 p-4 group-hover:bg-zinc-100 transition-colors">
+          <Link to="/lesen" className={homeNavCardLinkClassName}>
+            <div className={homeNavCardIconWrapClassName}>
               <svg
                 width="24"
                 height="24"
@@ -47,20 +50,15 @@ const Home = () => {
               </svg>
             </div>
             <div>
-              <h2 className="text-3xl font-semibold text-zinc-900 mb-2">
-                Lesen
-              </h2>
-              <p className="text-zinc-500">
+              <h2 className={cardHeadingClassName}>Lesen</h2>
+              <p className={cardBodyTextClassName}>
                 Texte verstehen und Fragen beantworten.
               </p>
             </div>
           </Link>
 
-          <Link
-            to="/horen"
-            className="group relative flex flex-col items-start justify-between rounded-3xl border border-zinc-200 bg-white p-10 transition-all duration-500 hover:border-zinc-400 hover:shadow-[0_20px_50px_rgba(0,0,0,0.05)] overflow-hidden"
-          >
-            <div className="mb-12 rounded-full bg-zinc-50 p-4 group-hover:bg-zinc-100 transition-colors">
+          <Link to="/horen" className={homeNavCardLinkClassName}>
+            <div className={homeNavCardIconWrapClassName}>
               <svg
                 width="24"
                 height="24"
@@ -76,10 +74,8 @@ const Home = () => {
               </svg>
             </div>
             <div>
-              <h2 className="text-3xl font-semibold text-zinc-900 mb-2">
-                Hören
-              </h2>
-              <p className="text-zinc-500">
+              <h2 className={cardHeadingClassName}>Hören</h2>
+              <p className={cardBodyTextClassName}>
                 Hörverstehen trainieren mit Audiobeispielen.
               </p>
             </div>
@@ -87,7 +83,7 @@ const Home = () => {
         </div>
 
         {/* Fine-line footer decor */}
-        <div className="mt-24 w-full max-w-xs h-[1px] bg-zinc-100 mx-auto" />
+        <div className="mt-24 w-full max-w-xs h-px bg-zinc-100 mx-auto" />
       </div>
     </div>
   );
