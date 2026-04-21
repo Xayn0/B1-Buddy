@@ -8,7 +8,7 @@ import {
 function Lesen() {
   return (
     <div className="min-h-[calc(100vh-4rem)] max-w-5xl mx-auto px-6 py-12 sm:py-16">
-      <h1 className="text-3xl sm:text-4xl font-semibold text-zinc-900 tracking-tight text-center mb-10">
+      <h1 className="text-3xl sm:text-4xl font-semibold text-zinc-900 tracking-tight text-center mb-10 dark:text-zinc-100">
         Lesen
       </h1>
 

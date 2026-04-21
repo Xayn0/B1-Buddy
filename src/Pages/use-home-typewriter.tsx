@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export function useTypewriter(text: string) {
+function useTypewriter(text: string) {
   const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
   const [speed, setSpeed] = useState(150);
@@ -28,4 +28,15 @@ export function useTypewriter(text: string) {
   }, [displayText, isDeleting, speed, text]);
 
   return { displayText };
+}
+
+export function Typewriter({ text }: { text: string }) {
+  const { displayText } = useTypewriter(text);
+
+  return (
+    <span className="relative inter-class">
+      <span className="text-zinc-900 dark:text-zinc-100">{displayText}</span>
+      <span className="ml-1 inline-block w-[2px] h-[1em] bg-zinc-900 align-middle animate-[pulse_0.8s_infinite] dark:bg-zinc-100"></span>
+    </span>
+  );
 }
